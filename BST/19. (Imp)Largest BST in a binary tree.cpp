@@ -37,3 +37,44 @@ bool getLargestBst(Node* root, vector<int> &ans, vector<int> &ret) {
     	getLargestBst(root, ans, t);
     	return ans.size();
     }
+
+//Space efficient solution
+//     class Solution{
+//     struct Subtree {
+//         bool isBst;
+//         int min;
+//         int max;
+//         int size;
+//     };
+//     public:
+//     /*You are required to complete this method */
+//     // Return the size of the largest sub-tree which is also a BST
+//     Subtree getLargestBst(Node* root, int &n) {
+//         if(!root) {
+//             return {true, INT_MAX, INT_MIN, 0};
+//         }
+        
+//         Subtree lst = getLargestBst(root->left, n);
+//         Subtree rst = getLargestBst(root->right, n);
+        
+//         int cmin = min(root->data, min(lst.min, rst.min));
+//         int cmax = max(root->data, max(lst.max, rst.max));
+        
+//         if(lst.isBst && rst.isBst) {
+//             if(lst.max < root->data && rst.min > root->data){
+//                 if(n < lst.size + rst.size + 1)
+//                     n = lst.size + rst.size + 1;
+//                 return {true, cmin, cmax, lst.size + rst.size + 1};
+//             }
+//         }
+//         return {false, cmin, cmax, lst.size + rst.size + 1};
+//     }
+    
+//     int largestBst(Node *root)
+//     {
+//     	//Your code here
+//     	int n;
+//     	getLargestBst(root, n);
+//     	return n;
+//     }
+// };
